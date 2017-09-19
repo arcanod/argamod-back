@@ -1,0 +1,50 @@
+{
+  "name": "@arcanod/argamod-back",
+  "description": "Back-end of argamod",
+  "version": "0.0.0",
+  "author": "Arcanod Team <tprelot@arcanod.com> (https://github.com/arcanod)",
+  "contributors": [],
+  "keywords": [
+    "arcanod",
+    "game",
+    "argamod",
+    "back",
+    "api"
+  ],
+  "dependencies": {
+    "apollo-server-express": "^1.1.2",
+    "body-parser": "^1.18.1",
+    "express": "^4.15.4",
+    "graphql": "^0.11.3"
+  },
+  "devDependencies": {
+    "@gnodi/eslint-config": "^0.4.0",
+    "chai": "^4.1.0",
+    "chai-as-promised": "^7.1.1",
+    "coveralls": "^2.11.15",
+    "mocha": "^3.4.2",
+    "nyc": "^11.0.3"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gnodi/argamod-back"
+  },
+  "main": "index",
+  "scripts": {
+    "check": "gnodi-lint && npm run test-coverage && npm run test-integration",
+    "lint": "gnodi-lint",
+    "start": "node index",
+    "test": "NODE_ENV='test' mocha --recursive test/unit/ src/",
+    "test-coverage": "nyc npm test && nyc report --reporter text-summary",
+    "test-coveralls": "nyc npm test && nyc report --reporter text-lcov | coveralls",
+    "test-debug": "NODE_ENV='test' mocha --recursive --full-trace --check-leaks test/unit/ src/",
+    "test-integration": "NODE_ENV='test' mocha --recursive test/integration/",
+    "test-watch": "NODE_ENV='test' mocha -w -b --recursive test/unit/ test/integration/ test/fixtures/ index.js"
+  },
+  "bin": {},
+  "engines": {
+    "node": ">=8",
+    "npm": ">=5"
+  }
+}
